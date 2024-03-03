@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Password Generator</title>
+</head>
+<body>
+    <header>
+        <h1>Generatore di Password Sicure</h1>
+    </header>
+
+    <main>
+        <form method="post" action="{{ url_for('generate') }}">
+            <label for="length">Lunghezza della password:</label>
+            <input type="number" name="length" min="1" required>
+            <button type="submit">Genera Password</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if password %}
+            <p class="success">Ecco la tua password sicura: <strong>{{ password }}</strong></p>
+        {% endif %}
+    </main>
+    
+    <footer>
+        <!-- Eventuali informazioni del footer -->
+    </footer>
+</body>
+</html>
+
